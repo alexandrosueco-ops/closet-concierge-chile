@@ -9,38 +9,291 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SellRouteImport } from './routes/sell'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WarehouseOutboundRouteImport } from './routes/warehouse.outbound'
+import { Route as WarehouseInboundRouteImport } from './routes/warehouse.inbound'
+import { Route as SellerOrdersRouteImport } from './routes/seller.orders'
+import { Route as SellerDashboardRouteImport } from './routes/seller.dashboard'
+import { Route as ListingIdRouteImport } from './routes/listing.$id'
+import { Route as LegalTermsRouteImport } from './routes/legal.terms'
+import { Route as LegalRefundsRouteImport } from './routes/legal.refunds'
+import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
+import { Route as LegalAuthenticityRouteImport } from './routes/legal.authenticity'
+import { Route as BuyerOrdersRouteImport } from './routes/buyer.orders'
+import { Route as AuthSignupRouteImport } from './routes/auth.signup'
+import { Route as AuthLoginRouteImport } from './routes/auth.login'
+import { Route as WarehouseVerifyOrderIdRouteImport } from './routes/warehouse.verify.$orderId'
 
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WarehouseOutboundRoute = WarehouseOutboundRouteImport.update({
+  id: '/warehouse/outbound',
+  path: '/warehouse/outbound',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehouseInboundRoute = WarehouseInboundRouteImport.update({
+  id: '/warehouse/inbound',
+  path: '/warehouse/inbound',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellerOrdersRoute = SellerOrdersRouteImport.update({
+  id: '/seller/orders',
+  path: '/seller/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellerDashboardRoute = SellerDashboardRouteImport.update({
+  id: '/seller/dashboard',
+  path: '/seller/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListingIdRoute = ListingIdRouteImport.update({
+  id: '/listing/$id',
+  path: '/listing/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRefundsRoute = LegalRefundsRouteImport.update({
+  id: '/legal/refunds',
+  path: '/legal/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalAuthenticityRoute = LegalAuthenticityRouteImport.update({
+  id: '/legal/authenticity',
+  path: '/legal/authenticity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyerOrdersRoute = BuyerOrdersRouteImport.update({
+  id: '/buyer/orders',
+  path: '/buyer/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthSignupRoute = AuthSignupRouteImport.update({
+  id: '/auth/signup',
+  path: '/auth/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehouseVerifyOrderIdRoute = WarehouseVerifyOrderIdRouteImport.update({
+  id: '/warehouse/verify/$orderId',
+  path: '/warehouse/verify/$orderId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
+  '/settings': typeof SettingsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
+  '/buyer/orders': typeof BuyerOrdersRoute
+  '/legal/authenticity': typeof LegalAuthenticityRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/listing/$id': typeof ListingIdRoute
+  '/seller/dashboard': typeof SellerDashboardRoute
+  '/seller/orders': typeof SellerOrdersRoute
+  '/warehouse/inbound': typeof WarehouseInboundRoute
+  '/warehouse/outbound': typeof WarehouseOutboundRoute
+  '/warehouse/verify/$orderId': typeof WarehouseVerifyOrderIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
+  '/settings': typeof SettingsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
+  '/buyer/orders': typeof BuyerOrdersRoute
+  '/legal/authenticity': typeof LegalAuthenticityRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/listing/$id': typeof ListingIdRoute
+  '/seller/dashboard': typeof SellerDashboardRoute
+  '/seller/orders': typeof SellerOrdersRoute
+  '/warehouse/inbound': typeof WarehouseInboundRoute
+  '/warehouse/outbound': typeof WarehouseOutboundRoute
+  '/warehouse/verify/$orderId': typeof WarehouseVerifyOrderIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
+  '/settings': typeof SettingsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
+  '/buyer/orders': typeof BuyerOrdersRoute
+  '/legal/authenticity': typeof LegalAuthenticityRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/listing/$id': typeof ListingIdRoute
+  '/seller/dashboard': typeof SellerDashboardRoute
+  '/seller/orders': typeof SellerOrdersRoute
+  '/warehouse/inbound': typeof WarehouseInboundRoute
+  '/warehouse/outbound': typeof WarehouseOutboundRoute
+  '/warehouse/verify/$orderId': typeof WarehouseVerifyOrderIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/search'
+    | '/sell'
+    | '/settings'
+    | '/auth/login'
+    | '/auth/signup'
+    | '/buyer/orders'
+    | '/legal/authenticity'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
+    | '/listing/$id'
+    | '/seller/dashboard'
+    | '/seller/orders'
+    | '/warehouse/inbound'
+    | '/warehouse/outbound'
+    | '/warehouse/verify/$orderId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/search'
+    | '/sell'
+    | '/settings'
+    | '/auth/login'
+    | '/auth/signup'
+    | '/buyer/orders'
+    | '/legal/authenticity'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
+    | '/listing/$id'
+    | '/seller/dashboard'
+    | '/seller/orders'
+    | '/warehouse/inbound'
+    | '/warehouse/outbound'
+    | '/warehouse/verify/$orderId'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/search'
+    | '/sell'
+    | '/settings'
+    | '/auth/login'
+    | '/auth/signup'
+    | '/buyer/orders'
+    | '/legal/authenticity'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
+    | '/listing/$id'
+    | '/seller/dashboard'
+    | '/seller/orders'
+    | '/warehouse/inbound'
+    | '/warehouse/outbound'
+    | '/warehouse/verify/$orderId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  SearchRoute: typeof SearchRoute
+  SellRoute: typeof SellRoute
+  SettingsRoute: typeof SettingsRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthSignupRoute: typeof AuthSignupRoute
+  BuyerOrdersRoute: typeof BuyerOrdersRoute
+  LegalAuthenticityRoute: typeof LegalAuthenticityRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalRefundsRoute: typeof LegalRefundsRoute
+  LegalTermsRoute: typeof LegalTermsRoute
+  ListingIdRoute: typeof ListingIdRoute
+  SellerDashboardRoute: typeof SellerDashboardRoute
+  SellerOrdersRoute: typeof SellerOrdersRoute
+  WarehouseInboundRoute: typeof WarehouseInboundRoute
+  WarehouseOutboundRoute: typeof WarehouseOutboundRoute
+  WarehouseVerifyOrderIdRoute: typeof WarehouseVerifyOrderIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,21 +301,120 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/warehouse/outbound': {
+      id: '/warehouse/outbound'
+      path: '/warehouse/outbound'
+      fullPath: '/warehouse/outbound'
+      preLoaderRoute: typeof WarehouseOutboundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouse/inbound': {
+      id: '/warehouse/inbound'
+      path: '/warehouse/inbound'
+      fullPath: '/warehouse/inbound'
+      preLoaderRoute: typeof WarehouseInboundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seller/orders': {
+      id: '/seller/orders'
+      path: '/seller/orders'
+      fullPath: '/seller/orders'
+      preLoaderRoute: typeof SellerOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seller/dashboard': {
+      id: '/seller/dashboard'
+      path: '/seller/dashboard'
+      fullPath: '/seller/dashboard'
+      preLoaderRoute: typeof SellerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listing/$id': {
+      id: '/listing/$id'
+      path: '/listing/$id'
+      fullPath: '/listing/$id'
+      preLoaderRoute: typeof ListingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/terms': {
+      id: '/legal/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/refunds': {
+      id: '/legal/refunds'
+      path: '/legal/refunds'
+      fullPath: '/legal/refunds'
+      preLoaderRoute: typeof LegalRefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/authenticity': {
+      id: '/legal/authenticity'
+      path: '/legal/authenticity'
+      fullPath: '/legal/authenticity'
+      preLoaderRoute: typeof LegalAuthenticityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyer/orders': {
+      id: '/buyer/orders'
+      path: '/buyer/orders'
+      fullPath: '/buyer/orders'
+      preLoaderRoute: typeof BuyerOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/signup': {
+      id: '/auth/signup'
+      path: '/auth/signup'
+      fullPath: '/auth/signup'
+      preLoaderRoute: typeof AuthSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouse/verify/$orderId': {
+      id: '/warehouse/verify/$orderId'
+      path: '/warehouse/verify/$orderId'
+      fullPath: '/warehouse/verify/$orderId'
+      preLoaderRoute: typeof WarehouseVerifyOrderIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  SearchRoute: SearchRoute,
+  SellRoute: SellRoute,
+  SettingsRoute: SettingsRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthSignupRoute: AuthSignupRoute,
+  BuyerOrdersRoute: BuyerOrdersRoute,
+  LegalAuthenticityRoute: LegalAuthenticityRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalRefundsRoute: LegalRefundsRoute,
+  LegalTermsRoute: LegalTermsRoute,
+  ListingIdRoute: ListingIdRoute,
+  SellerDashboardRoute: SellerDashboardRoute,
+  SellerOrdersRoute: SellerOrdersRoute,
+  WarehouseInboundRoute: WarehouseInboundRoute,
+  WarehouseOutboundRoute: WarehouseOutboundRoute,
+  WarehouseVerifyOrderIdRoute: WarehouseVerifyOrderIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
