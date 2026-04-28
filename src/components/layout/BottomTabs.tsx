@@ -2,13 +2,14 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Search, PlusSquare, Package, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const tabs = [
+type Tab = { to: string; label: string; icon: typeof Home; primary?: boolean };
+const tabs: Tab[] = [
   { to: "/", label: "Inicio", icon: Home },
   { to: "/search", label: "Buscar", icon: Search },
   { to: "/sell", label: "Vender", icon: PlusSquare, primary: true },
   { to: "/buyer/orders", label: "Compras", icon: Package },
   { to: "/settings", label: "Cuenta", icon: User },
-] as const;
+];
 
 export function BottomTabs() {
   const path = useRouterState({ select: (s) => s.location.pathname });
