@@ -21,7 +21,7 @@ export function BottomTabs() {
           return (
             <Link
               key={to}
-              to={to}
+              to={to as "/"}
               className={cn(
                 "flex flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-medium transition-colors",
                 active ? "text-trust" : "text-muted-foreground hover:text-foreground",
