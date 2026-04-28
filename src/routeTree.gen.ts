@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -19,8 +20,15 @@ import { Route as SellerOrdersRouteImport } from './routes/seller.orders'
 import { Route as SellerDashboardRouteImport } from './routes/seller.dashboard'
 import { Route as ListingIdRouteImport } from './routes/listing.$id'
 import { Route as BuyerOrdersRouteImport } from './routes/buyer.orders'
+import { Route as AuthSignupRouteImport } from './routes/auth.signup'
+import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as WarehouseVerifyOrderIdRouteImport } from './routes/warehouse.verify.$orderId'
 
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SellRoute = SellRouteImport.update({
   id: '/sell',
   path: '/sell',
@@ -71,6 +79,16 @@ const BuyerOrdersRoute = BuyerOrdersRouteImport.update({
   path: '/buyer/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthSignupRoute = AuthSignupRouteImport.update({
+  id: '/auth/signup',
+  path: '/auth/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WarehouseVerifyOrderIdRoute = WarehouseVerifyOrderIdRouteImport.update({
   id: '/warehouse/verify/$orderId',
   path: '/warehouse/verify/$orderId',
@@ -82,6 +100,9 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
+  '/settings': typeof SettingsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
   '/buyer/orders': typeof BuyerOrdersRoute
   '/listing/$id': typeof ListingIdRoute
   '/seller/dashboard': typeof SellerDashboardRoute
@@ -95,6 +116,9 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
+  '/settings': typeof SettingsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
   '/buyer/orders': typeof BuyerOrdersRoute
   '/listing/$id': typeof ListingIdRoute
   '/seller/dashboard': typeof SellerDashboardRoute
@@ -109,6 +133,9 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
+  '/settings': typeof SettingsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
   '/buyer/orders': typeof BuyerOrdersRoute
   '/listing/$id': typeof ListingIdRoute
   '/seller/dashboard': typeof SellerDashboardRoute
@@ -124,6 +151,9 @@ export interface FileRouteTypes {
     | '/admin'
     | '/search'
     | '/sell'
+    | '/settings'
+    | '/auth/login'
+    | '/auth/signup'
     | '/buyer/orders'
     | '/listing/$id'
     | '/seller/dashboard'
@@ -137,6 +167,9 @@ export interface FileRouteTypes {
     | '/admin'
     | '/search'
     | '/sell'
+    | '/settings'
+    | '/auth/login'
+    | '/auth/signup'
     | '/buyer/orders'
     | '/listing/$id'
     | '/seller/dashboard'
@@ -150,6 +183,9 @@ export interface FileRouteTypes {
     | '/admin'
     | '/search'
     | '/sell'
+    | '/settings'
+    | '/auth/login'
+    | '/auth/signup'
     | '/buyer/orders'
     | '/listing/$id'
     | '/seller/dashboard'
@@ -164,6 +200,9 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   SearchRoute: typeof SearchRoute
   SellRoute: typeof SellRoute
+  SettingsRoute: typeof SettingsRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthSignupRoute: typeof AuthSignupRoute
   BuyerOrdersRoute: typeof BuyerOrdersRoute
   ListingIdRoute: typeof ListingIdRoute
   SellerDashboardRoute: typeof SellerDashboardRoute
@@ -175,6 +214,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sell': {
       id: '/sell'
       path: '/sell'
@@ -245,6 +291,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyerOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/signup': {
+      id: '/auth/signup'
+      path: '/auth/signup'
+      fullPath: '/auth/signup'
+      preLoaderRoute: typeof AuthSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/warehouse/verify/$orderId': {
       id: '/warehouse/verify/$orderId'
       path: '/warehouse/verify/$orderId'
@@ -260,6 +320,9 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   SearchRoute: SearchRoute,
   SellRoute: SellRoute,
+  SettingsRoute: SettingsRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthSignupRoute: AuthSignupRoute,
   BuyerOrdersRoute: BuyerOrdersRoute,
   ListingIdRoute: ListingIdRoute,
   SellerDashboardRoute: SellerDashboardRoute,
