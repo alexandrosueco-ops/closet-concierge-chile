@@ -2,7 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { LayoutDashboard, Package, DollarSign, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const tabs = [
+type Tab = { to: string; label: string; icon: typeof LayoutDashboard; primary?: boolean };
+const tabs: Tab[] = [
   { to: "/seller/dashboard", label: "Panel", icon: LayoutDashboard },
   { to: "/seller/orders", label: "Ventas", icon: Package },
   { to: "/sell", label: "Publicar", icon: DollarSign, primary: true },
