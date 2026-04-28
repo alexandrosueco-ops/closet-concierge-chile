@@ -19,6 +19,10 @@ import { Route as WarehouseInboundRouteImport } from './routes/warehouse.inbound
 import { Route as SellerOrdersRouteImport } from './routes/seller.orders'
 import { Route as SellerDashboardRouteImport } from './routes/seller.dashboard'
 import { Route as ListingIdRouteImport } from './routes/listing.$id'
+import { Route as LegalTermsRouteImport } from './routes/legal.terms'
+import { Route as LegalRefundsRouteImport } from './routes/legal.refunds'
+import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
+import { Route as LegalAuthenticityRouteImport } from './routes/legal.authenticity'
 import { Route as BuyerOrdersRouteImport } from './routes/buyer.orders'
 import { Route as AuthSignupRouteImport } from './routes/auth.signup'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
@@ -74,6 +78,26 @@ const ListingIdRoute = ListingIdRouteImport.update({
   path: '/listing/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRefundsRoute = LegalRefundsRouteImport.update({
+  id: '/legal/refunds',
+  path: '/legal/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalAuthenticityRoute = LegalAuthenticityRouteImport.update({
+  id: '/legal/authenticity',
+  path: '/legal/authenticity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuyerOrdersRoute = BuyerOrdersRouteImport.update({
   id: '/buyer/orders',
   path: '/buyer/orders',
@@ -104,6 +128,10 @@ export interface FileRoutesByFullPath {
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
   '/buyer/orders': typeof BuyerOrdersRoute
+  '/legal/authenticity': typeof LegalAuthenticityRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/listing/$id': typeof ListingIdRoute
   '/seller/dashboard': typeof SellerDashboardRoute
   '/seller/orders': typeof SellerOrdersRoute
@@ -120,6 +148,10 @@ export interface FileRoutesByTo {
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
   '/buyer/orders': typeof BuyerOrdersRoute
+  '/legal/authenticity': typeof LegalAuthenticityRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/listing/$id': typeof ListingIdRoute
   '/seller/dashboard': typeof SellerDashboardRoute
   '/seller/orders': typeof SellerOrdersRoute
@@ -137,6 +169,10 @@ export interface FileRoutesById {
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
   '/buyer/orders': typeof BuyerOrdersRoute
+  '/legal/authenticity': typeof LegalAuthenticityRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/listing/$id': typeof ListingIdRoute
   '/seller/dashboard': typeof SellerDashboardRoute
   '/seller/orders': typeof SellerOrdersRoute
@@ -155,6 +191,10 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/signup'
     | '/buyer/orders'
+    | '/legal/authenticity'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
     | '/listing/$id'
     | '/seller/dashboard'
     | '/seller/orders'
@@ -171,6 +211,10 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/signup'
     | '/buyer/orders'
+    | '/legal/authenticity'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
     | '/listing/$id'
     | '/seller/dashboard'
     | '/seller/orders'
@@ -187,6 +231,10 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/signup'
     | '/buyer/orders'
+    | '/legal/authenticity'
+    | '/legal/privacy'
+    | '/legal/refunds'
+    | '/legal/terms'
     | '/listing/$id'
     | '/seller/dashboard'
     | '/seller/orders'
@@ -204,6 +252,10 @@ export interface RootRouteChildren {
   AuthLoginRoute: typeof AuthLoginRoute
   AuthSignupRoute: typeof AuthSignupRoute
   BuyerOrdersRoute: typeof BuyerOrdersRoute
+  LegalAuthenticityRoute: typeof LegalAuthenticityRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalRefundsRoute: typeof LegalRefundsRoute
+  LegalTermsRoute: typeof LegalTermsRoute
   ListingIdRoute: typeof ListingIdRoute
   SellerDashboardRoute: typeof SellerDashboardRoute
   SellerOrdersRoute: typeof SellerOrdersRoute
@@ -284,6 +336,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/terms': {
+      id: '/legal/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/refunds': {
+      id: '/legal/refunds'
+      path: '/legal/refunds'
+      fullPath: '/legal/refunds'
+      preLoaderRoute: typeof LegalRefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/authenticity': {
+      id: '/legal/authenticity'
+      path: '/legal/authenticity'
+      fullPath: '/legal/authenticity'
+      preLoaderRoute: typeof LegalAuthenticityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buyer/orders': {
       id: '/buyer/orders'
       path: '/buyer/orders'
@@ -324,6 +404,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthLoginRoute: AuthLoginRoute,
   AuthSignupRoute: AuthSignupRoute,
   BuyerOrdersRoute: BuyerOrdersRoute,
+  LegalAuthenticityRoute: LegalAuthenticityRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalRefundsRoute: LegalRefundsRoute,
+  LegalTermsRoute: LegalTermsRoute,
   ListingIdRoute: ListingIdRoute,
   SellerDashboardRoute: SellerDashboardRoute,
   SellerOrdersRoute: SellerOrdersRoute,
@@ -334,3 +418,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
