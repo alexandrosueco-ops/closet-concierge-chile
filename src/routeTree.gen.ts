@@ -9,19 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SellRouteImport } from './routes/sell'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WarehouseOutboundRouteImport } from './routes/warehouse.outbound'
+import { Route as WarehouseInboundRouteImport } from './routes/warehouse.inbound'
+import { Route as SellerOrdersRouteImport } from './routes/seller.orders'
+import { Route as SellerDashboardRouteImport } from './routes/seller.dashboard'
 import { Route as ListingIdRouteImport } from './routes/listing.$id'
 import { Route as BuyerOrdersRouteImport } from './routes/buyer.orders'
+import { Route as WarehouseVerifyOrderIdRouteImport } from './routes/warehouse.verify.$orderId'
 
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehouseOutboundRoute = WarehouseOutboundRouteImport.update({
+  id: '/warehouse/outbound',
+  path: '/warehouse/outbound',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehouseInboundRoute = WarehouseInboundRouteImport.update({
+  id: '/warehouse/inbound',
+  path: '/warehouse/inbound',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellerOrdersRoute = SellerOrdersRouteImport.update({
+  id: '/seller/orders',
+  path: '/seller/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellerDashboardRoute = SellerDashboardRouteImport.update({
+  id: '/seller/dashboard',
+  path: '/seller/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ListingIdRoute = ListingIdRouteImport.update({
@@ -34,43 +71,117 @@ const BuyerOrdersRoute = BuyerOrdersRouteImport.update({
   path: '/buyer/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WarehouseVerifyOrderIdRoute = WarehouseVerifyOrderIdRouteImport.update({
+  id: '/warehouse/verify/$orderId',
+  path: '/warehouse/verify/$orderId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
   '/buyer/orders': typeof BuyerOrdersRoute
   '/listing/$id': typeof ListingIdRoute
+  '/seller/dashboard': typeof SellerDashboardRoute
+  '/seller/orders': typeof SellerOrdersRoute
+  '/warehouse/inbound': typeof WarehouseInboundRoute
+  '/warehouse/outbound': typeof WarehouseOutboundRoute
+  '/warehouse/verify/$orderId': typeof WarehouseVerifyOrderIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
   '/buyer/orders': typeof BuyerOrdersRoute
   '/listing/$id': typeof ListingIdRoute
+  '/seller/dashboard': typeof SellerDashboardRoute
+  '/seller/orders': typeof SellerOrdersRoute
+  '/warehouse/inbound': typeof WarehouseInboundRoute
+  '/warehouse/outbound': typeof WarehouseOutboundRoute
+  '/warehouse/verify/$orderId': typeof WarehouseVerifyOrderIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
   '/buyer/orders': typeof BuyerOrdersRoute
   '/listing/$id': typeof ListingIdRoute
+  '/seller/dashboard': typeof SellerDashboardRoute
+  '/seller/orders': typeof SellerOrdersRoute
+  '/warehouse/inbound': typeof WarehouseInboundRoute
+  '/warehouse/outbound': typeof WarehouseOutboundRoute
+  '/warehouse/verify/$orderId': typeof WarehouseVerifyOrderIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/search' | '/buyer/orders' | '/listing/$id'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/search'
+    | '/sell'
+    | '/buyer/orders'
+    | '/listing/$id'
+    | '/seller/dashboard'
+    | '/seller/orders'
+    | '/warehouse/inbound'
+    | '/warehouse/outbound'
+    | '/warehouse/verify/$orderId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/search' | '/buyer/orders' | '/listing/$id'
-  id: '__root__' | '/' | '/search' | '/buyer/orders' | '/listing/$id'
+  to:
+    | '/'
+    | '/admin'
+    | '/search'
+    | '/sell'
+    | '/buyer/orders'
+    | '/listing/$id'
+    | '/seller/dashboard'
+    | '/seller/orders'
+    | '/warehouse/inbound'
+    | '/warehouse/outbound'
+    | '/warehouse/verify/$orderId'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/search'
+    | '/sell'
+    | '/buyer/orders'
+    | '/listing/$id'
+    | '/seller/dashboard'
+    | '/seller/orders'
+    | '/warehouse/inbound'
+    | '/warehouse/outbound'
+    | '/warehouse/verify/$orderId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   SearchRoute: typeof SearchRoute
+  SellRoute: typeof SellRoute
   BuyerOrdersRoute: typeof BuyerOrdersRoute
   ListingIdRoute: typeof ListingIdRoute
+  SellerDashboardRoute: typeof SellerDashboardRoute
+  SellerOrdersRoute: typeof SellerOrdersRoute
+  WarehouseInboundRoute: typeof WarehouseInboundRoute
+  WarehouseOutboundRoute: typeof WarehouseOutboundRoute
+  WarehouseVerifyOrderIdRoute: typeof WarehouseVerifyOrderIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -78,11 +189,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouse/outbound': {
+      id: '/warehouse/outbound'
+      path: '/warehouse/outbound'
+      fullPath: '/warehouse/outbound'
+      preLoaderRoute: typeof WarehouseOutboundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouse/inbound': {
+      id: '/warehouse/inbound'
+      path: '/warehouse/inbound'
+      fullPath: '/warehouse/inbound'
+      preLoaderRoute: typeof WarehouseInboundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seller/orders': {
+      id: '/seller/orders'
+      path: '/seller/orders'
+      fullPath: '/seller/orders'
+      preLoaderRoute: typeof SellerOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seller/dashboard': {
+      id: '/seller/dashboard'
+      path: '/seller/dashboard'
+      fullPath: '/seller/dashboard'
+      preLoaderRoute: typeof SellerDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/listing/$id': {
@@ -99,14 +245,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyerOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/warehouse/verify/$orderId': {
+      id: '/warehouse/verify/$orderId'
+      path: '/warehouse/verify/$orderId'
+      fullPath: '/warehouse/verify/$orderId'
+      preLoaderRoute: typeof WarehouseVerifyOrderIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   SearchRoute: SearchRoute,
+  SellRoute: SellRoute,
   BuyerOrdersRoute: BuyerOrdersRoute,
   ListingIdRoute: ListingIdRoute,
+  SellerDashboardRoute: SellerDashboardRoute,
+  SellerOrdersRoute: SellerOrdersRoute,
+  WarehouseInboundRoute: WarehouseInboundRoute,
+  WarehouseOutboundRoute: WarehouseOutboundRoute,
+  WarehouseVerifyOrderIdRoute: WarehouseVerifyOrderIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
