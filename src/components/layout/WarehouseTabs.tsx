@@ -16,7 +16,7 @@ export function WarehouseTabs() {
         {tabs.map(({ to, label, icon: Icon }) => {
           const active = path.startsWith(to);
           return (
-            <Link key={to} to={to} className={cn(
+            <Link key={to} to={to as "/"} className={cn(
               "flex flex-1 flex-col items-center gap-1 rounded-lg px-2 py-2 text-xs font-medium",
               active ? "text-trust" : "text-muted-foreground"
             )}>
