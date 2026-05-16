@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, useRouterState } from "@tanstack/react-router";
 import { DesktopSidebar } from "@/components/layout/DesktopSidebar";
 
 function NotFoundComponent() {
@@ -14,14 +14,25 @@ function NotFoundComponent() {
   );
 }
 
-export const Route = createRootRoute({
-  component: () => (
+function RootLayout() {
+  const path = useRouterState({ select: s => s.location.pathname });
+  const isLanding = path === "/";
+
+  // Landing page: sin sidebar, sin app-shell — full width
+  if (isLanding) return <Outlet />;
+
+  // Resto de páginas: layout con sidebar en desktop
+  return (
     <div className="desktop-layout">
       <DesktopSidebar />
       <main className="desktop-content">
         <Outlet />
       </main>
     </div>
-  ),
+  );
+}
+
+export const Route = createRootRoute({
+  component: RootLayout,
   notFoundComponent: NotFoundComponent,
 });
