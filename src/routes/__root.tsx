@@ -1,23 +1,27 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { DesktopSidebar } from "@/components/layout/DesktopSidebar";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Página no encontrada</h2>
-        <p className="mt-2 text-sm text-muted-foreground">La página que buscas no existe.</p>
-        <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground">
-            Volver al inicio
-          </Link>
-        </div>
-      </div>
+    <div className="flex min-h-dvh flex-col items-center justify-center px-6 text-center">
+      <p className="font-black text-8xl opacity-10">404</p>
+      <h1 className="mt-2 font-black text-2xl" style={{ letterSpacing: "-0.04em" }}>Página no encontrada</h1>
+      <p className="mt-2 text-sm text-muted-foreground">La página que buscas no existe.</p>
+      <Link to="/" className="mt-6 rounded-full bg-primary px-6 py-3 text-sm font-black">
+        Volver al inicio
+      </Link>
     </div>
   );
 }
 
 export const Route = createRootRoute({
-  component: () => <Outlet />,
+  component: () => (
+    <div className="desktop-layout">
+      <DesktopSidebar />
+      <main className="desktop-content">
+        <Outlet />
+      </main>
+    </div>
+  ),
   notFoundComponent: NotFoundComponent,
 });
