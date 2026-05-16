@@ -50,7 +50,7 @@ function ListingPage() {
         </div>
         {listing.photos.length > 1 && (
           <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-            {listing.photos.map((_, i) => (
+            {listing.photos.map((_: string, i: number) => (
               <button key={i} onClick={() => setActivePhoto(i)} className={`h-1.5 rounded-full transition-all ${i === activePhoto ? "w-4 bg-white" : "w-1.5 bg-white/50"}`} />
             ))}
           </div>
@@ -59,7 +59,7 @@ function ListingPage() {
 
       {listing.photos.length > 1 && (
         <div className="flex gap-2 overflow-x-auto px-4 py-2">
-          {listing.photos.map((p, i) => (
+          {listing.photos.map((p: string, i: number) => (
             <button key={i} onClick={() => setActivePhoto(i)} className={`shrink-0 h-14 w-14 overflow-hidden rounded-lg border-2 ${i === activePhoto ? "border-trust" : "border-transparent"}`}>
               <img src={p} alt="" className="h-full w-full object-cover" />
             </button>
