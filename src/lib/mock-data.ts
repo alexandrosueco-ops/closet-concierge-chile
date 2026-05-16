@@ -202,3 +202,4 @@ export const orderStatusLabel = (s: OrderStatus): string =>
     dispute_open: "Disputa abierta",
     dispute_resolved: "Disputa resuelta",
   }[s]);
+

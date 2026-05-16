@@ -1,59 +1,123 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Printer, Truck, Check } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { WarehouseTabs } from "@/components/layout/WarehouseTabs";
-import { OUTBOUND_QUEUE } from "@/lib/mock-data";
+import { formatCLP } from "@/lib/mock-data";
+import { Printer, CheckCircle2, Package, ChevronRight, Truck } from "lucide-react";
+import { useState } from "react";
 
 export const Route = createFileRoute("/warehouse/outbound")({
-  head: () => ({ meta: [{ title: "Bodega · Salidas — VeriCloset" }] }),
-  component: OutboundPage,
+  head: () => ({ meta: [{ title: "Outbound — VeriCloset Bodega" }] }),
+  component: WarehouseOutbound,
 });
 
-function OutboundPage() {
+interface OutboundItem {
+  orderId: string;
+  brand: string;
+  title: string;
+  buyerName: string;
+  buyerComuna: string;
+  carrier: string;
+  tracking: string;
+  labelUrl: string;
+  packed: boolean;
+}
+
+const OUTBOUND_QUEUE: OutboundItem[] = [
+  {
+    orderId: "ORD-G7H8I9", brand: "Gucci", title: "GG Marmont matelassé",
+    buyerName: "M. López", buyerComuna: "Las Condes",
+    carrier: "Chilexpress", tracking: "9999-7777-8888",
+    labelUrl: "#", packed: false,
+  },
+  {
+    orderId: "ORD-D4E5F6", brand: "Jordan", title: "Air Jordan 1 Retro High OG",
+    buyerName: "D. Rodríguez", buyerComuna: "Providencia",
+    carrier: "Starken", tracking: "STK-9988776",
+    labelUrl: "#", packed: true,
+  },
+];
+
+function WarehouseOutbound() {
+  const [items, setItems] = useState(OUTBOUND_QUEUE);
+
+  const togglePacked = (orderId: string) => {
+    setItems((prev) => prev.map((i) => i.orderId === orderId ? { ...i, packed: !i.packed } : i));
+  };
+
   return (
     <div className="app-shell pb-24">
-      <AppHeader title="Bodega · Salidas" />
-      <div className="space-y-3 px-4 pt-3">
-        {OUTBOUND_QUEUE.map((o) => (
-          <div key={o.orderId} className="rounded-2xl border border-border bg-card p-3">
-            <div className="flex justify-between">
-              <div>
-                <p className="text-[11px] uppercase tracking-wider text-muted-foreground">#{o.orderId}</p>
-                <p className="text-sm font-medium">{o.title}</p>
-                <p className="text-xs text-muted-foreground">{o.brand} → {o.buyer} ({o.city})</p>
-              </div>
-              <span className="trust-chip">✓ Verificado</span>
-            </div>
+      <AppHeader title="Despacho outbound" />
 
-            <div className="mt-3 rounded-xl bg-muted p-3">
-              <p className="text-xs font-semibold">Checklist de empaque</p>
-              <ul className="mt-2 space-y-1.5 text-xs">
-                {["Foto antes de empacar", "Tarjeta VeriCloset incluida", "Sello de seguridad", "Etiqueta pegada"].map((t) => (
-                  <li key={t} className="flex items-center gap-2">
-                    <input type="checkbox" className="h-3.5 w-3.5 accent-[var(--trust)]" /> {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className="px-4 pt-3 space-y-4">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="rounded-2xl border border-border bg-card p-3 text-center">
+            <p className="font-display text-lg font-semibold">{items.filter((i) => !i.packed).length}</p>
+            <p className="text-xs text-muted-foreground">Por despachar</p>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-3 text-center">
+            <p className="font-display text-lg font-semibold text-success">{items.filter((i) => i.packed).length}</p>
+            <p className="text-xs text-muted-foreground">Empacados</p>
+          </div>
+        </div>
 
-            <div className="mt-3 flex gap-2">
-              <button className="flex flex-1 items-center justify-center gap-1.5 rounded-full border border-border py-2.5 text-xs font-semibold">
-                <Printer className="h-3.5 w-3.5" /> Imprimir
-              </button>
-              <button className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-primary py-2.5 text-xs font-semibold text-primary-foreground">
-                <Truck className="h-3.5 w-3.5" /> Marcar enviado
-              </button>
-            </div>
-          </div>
-        ))}
-        {OUTBOUND_QUEUE.length === 0 && (
-          <div className="rounded-2xl border border-dashed p-10 text-center text-sm text-muted-foreground">
-            <Check className="mx-auto mb-2 h-6 w-6 text-success" />
-            Todo despachado.
-          </div>
-        )}
+        <div className="space-y-3">
+          {items.map((item) => (
+            <OutboundCard key={item.orderId} item={item} onTogglePacked={() => togglePacked(item.orderId)} />
+          ))}
+        </div>
       </div>
+
       <WarehouseTabs />
+    </div>
+  );
+}
+
+function OutboundCard({ item, onTogglePacked }: { item: OutboundItem; onTogglePacked: () => void }) {
+  return (
+    <div className={`rounded-2xl border bg-card overflow-hidden ${item.packed ? "border-success/40" : "border-border"}`}>
+      <div className="p-3">
+        <div className="flex items-start justify-between mb-2">
+          <div>
+            <p className="text-xs text-muted-foreground">{item.brand}</p>
+            <p className="text-sm font-medium">{item.title}</p>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Para: {item.buyerName} · {item.buyerComuna}
+            </p>
+          </div>
+          {item.packed && <CheckCircle2 className="h-5 w-5 text-success shrink-0" />}
+        </div>
+
+        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+          <Truck className="h-3.5 w-3.5" />
+          <span>{item.carrier} · {item.tracking}</span>
+        </div>
+
+        <div className="flex gap-2">
+          <a
+            href={item.labelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-full border border-border py-2 text-xs font-medium"
+          >
+            <Printer className="h-3.5 w-3.5" /> Imprimir etiqueta
+          </a>
+          <button
+            onClick={onTogglePacked}
+            className={`flex flex-1 items-center justify-center gap-1.5 rounded-full py-2 text-xs font-semibold ${item.packed ? "border border-success text-success" : "bg-primary text-primary-foreground"}`}
+          >
+            <Package className="h-3.5 w-3.5" />
+            {item.packed ? "Empacado ✓" : "Marcar como empacado"}
+          </button>
+        </div>
+      </div>
+
+      {item.packed && (
+        <div className="border-t border-success/30 bg-success/5 px-3 py-2">
+          <button className="w-full text-center text-xs font-semibold text-success">
+            Confirmar despacho al carrier →
+          </button>
+        </div>
+      )}
     </div>
   );
 }
