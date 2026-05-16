@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/buyer/orders")({
-  head: () => ({ meta: [{ title: "Mis compras — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Mis compras — Trueki" }] }),
   component: () => <AuthGuard><BuyerOrdersContent /></AuthGuard>,
 });
 
@@ -33,7 +33,7 @@ const MOCK_ORDERS: MockOrder[] = [
     events: [
       { at: "15 may", label: "Pago confirmado", done: true },
       { at: "16 may", label: "Vendedor despachó", done: true },
-      { at: "17 may", label: "En bodega VeriCloset", done: true },
+      { at: "17 may", label: "En bodega Trueki", done: true },
       { at: "Hoy", label: "Verificando autenticidad...", done: false },
       { at: "", label: "Enviado a ti", done: false },
       { at: "", label: "Entregado", done: false },
@@ -47,7 +47,7 @@ const MOCK_ORDERS: MockOrder[] = [
     events: [
       { at: "12 may", label: "Pago confirmado", done: true },
       { at: "13 may", label: "Vendedor despachó", done: true },
-      { at: "14 may", label: "En bodega VeriCloset", done: true },
+      { at: "14 may", label: "En bodega Trueki", done: true },
       { at: "14 may", label: "✓ Autenticidad verificada", done: true },
       { at: "15 may", label: "Enviado — Chilexpress", done: true },
       { at: "", label: "Entregado", done: false },
@@ -60,7 +60,7 @@ const MOCK_ORDERS: MockOrder[] = [
     events: [
       { at: "5 may", label: "Pago confirmado", done: true },
       { at: "6 may", label: "Vendedor despachó", done: true },
-      { at: "7 may", label: "En bodega VeriCloset", done: true },
+      { at: "7 may", label: "En bodega Trueki", done: true },
       { at: "7 may", label: "✓ Autenticidad verificada", done: true },
       { at: "8 may", label: "Enviado a ti", done: true },
       { at: "10 may", label: "Entregado", done: true },
@@ -196,7 +196,7 @@ function OrderDetail({ order, onBack }: { order: MockOrder; onBack: () => void }
         <div className="rounded-2xl bg-trust/5 border border-trust/20 p-4">
           <div className="flex items-center gap-2 mb-1.5">
             <ShieldCheck className="h-4 w-4 text-trust" />
-            <p className="text-sm font-semibold text-trust">Protección VeriCloset activa</p>
+            <p className="text-sm font-semibold text-trust">Protección Trueki activa</p>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Tu pago está retenido. Se libera al vendedor 48h después de que recibas el artículo sin problemas.

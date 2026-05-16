@@ -5,7 +5,7 @@ import { formatCLP, LISTINGS } from "@/lib/mock-data";
 import { TrendingUp, Package, AlertTriangle, Wallet, ChevronRight, Truck, Clock, CheckCircle2, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/seller/dashboard")({
-  head: () => ({ meta: [{ title: "Panel vendedor — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Panel vendedor — Trueki" }] }),
   component: SellerDashboard,
 });
 
@@ -80,7 +80,7 @@ function SellerDashboard() {
           <p className="text-sm font-semibold mb-3">¿Cuándo recibes tu pago?</p>
           <div className="space-y-2.5">
             {[
-              { icon: <Truck className="h-4 w-4 text-trust shrink-0" />, text: "Despachas a VeriCloset dentro de 48h" },
+              { icon: <Truck className="h-4 w-4 text-trust shrink-0" />, text: "Despachas a Trueki dentro de 48h" },
               { icon: <CheckCircle2 className="h-4 w-4 text-trust shrink-0" />, text: "Verificamos autenticidad y condición" },
               { icon: <Wallet className="h-4 w-4 text-trust shrink-0" />, text: "Pago liberado 48h después de entrega al comprador" },
             ].map(({ icon, text }, i) => (

@@ -6,7 +6,7 @@ import { formatCLP } from "@/lib/mock-data";
 import { useBrands, useCategories } from "@/hooks/useListings";
 
 export const Route = createFileRoute("/sell")({
-  head: () => ({ meta: [{ title: "Publicar — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Publicar — Trueki" }] }),
   component: SellWizard,
 });
 
@@ -301,7 +301,7 @@ function SellWizard() {
             {[
               "El artículo es 100% auténtico y de la marca indicada.",
               "La descripción y fotos representan fielmente el artículo.",
-              "Enviarás el artículo a VeriCloset dentro de 48h tras la venta.",
+              "Enviarás el artículo a Trueki dentro de 48h tras la venta.",
               "Artículos falsos resultan en strike y ban permanente.",
             ].map((t, i) => (
               <div key={i} className="flex items-start gap-2 text-sm text-muted-foreground">

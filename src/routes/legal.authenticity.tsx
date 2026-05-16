@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
-export const Route = createFileRoute("/legal/authenticity")({ head: () => ({ meta: [{ title: "Autenticidad — VeriCloset" }] }), component: AuthenticityPage });
+export const Route = createFileRoute("/legal/authenticity")({ head: () => ({ meta: [{ title: "Autenticidad — Trueki" }] }), component: AuthenticityPage });
 function AuthenticityPage() {
   return (
     <div className="app-shell">
@@ -12,7 +12,7 @@ function AuthenticityPage() {
         <div className="flex items-center gap-3 rounded-2xl bg-trust/5 border border-trust/20 p-4">
           <ShieldCheck className="h-8 w-8 text-trust shrink-0" />
           <div>
-            <p className="font-semibold text-trust">Garantía de autenticidad VeriCloset</p>
+            <p className="font-semibold text-trust">Garantía de autenticidad Trueki</p>
             <p className="text-xs text-muted-foreground mt-0.5">Si es falso, reembolso del 100%. Sin excepciones.</p>
           </div>
         </div>

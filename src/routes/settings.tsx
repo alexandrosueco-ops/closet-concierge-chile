@@ -9,7 +9,7 @@ import { AuthGuard } from "@/components/AuthGuard";
 import { useAuth, signOut } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/settings")({
-  head: () => ({ meta: [{ title: "Cuenta — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Cuenta — Trueki" }] }),
   component: SettingsPage,
 });
 
@@ -103,7 +103,7 @@ function SettingsContent() {
           <span className="text-sm font-medium">Cerrar sesión</span>
         </button>
 
-        <p className="text-center text-[11px] text-muted-foreground pb-2">VeriCloset v1.0 · Santiago, Chile 🇨🇱</p>
+        <p className="text-center text-[11px] text-muted-foreground pb-2">Trueki v1.0 · Santiago, Chile 🇨🇱</p>
       </div>
       <BottomTabs />
     </div>

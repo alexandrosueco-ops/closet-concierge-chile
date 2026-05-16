@@ -5,7 +5,7 @@ import { SellerTabs } from "@/components/layout/SellerTabs";
 import { SELLER_ORDERS, LISTINGS, formatCLP, orderStatusLabel } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/seller/orders")({
-  head: () => ({ meta: [{ title: "Mis ventas — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Mis ventas — Trueki" }] }),
   component: SellerOrdersPage,
 });
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ArrowLeft, Camera, Check, X, AlertTriangle, Printer, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/warehouse/verify/$orderId")({
-  head: () => ({ meta: [{ title: "Verificación — VeriCloset Bodega" }] }),
+  head: () => ({ meta: [{ title: "Verificación — Trueki Bodega" }] }),
   component: VerifyPage,
 });
 

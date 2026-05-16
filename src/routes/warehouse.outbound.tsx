@@ -6,7 +6,7 @@ import { Printer, CheckCircle2, Package, ChevronRight, Truck } from "lucide-reac
 import { useState } from "react";
 
 export const Route = createFileRoute("/warehouse/outbound")({
-  head: () => ({ meta: [{ title: "Outbound — VeriCloset Bodega" }] }),
+  head: () => ({ meta: [{ title: "Outbound — Trueki Bodega" }] }),
   component: WarehouseOutbound,
 });
 

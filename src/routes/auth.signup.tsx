@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/auth/signup")({
-  head: () => ({ meta: [{ title: "Crear cuenta — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Crear cuenta — Trueki" }] }),
   component: SignupPage,
 });
 

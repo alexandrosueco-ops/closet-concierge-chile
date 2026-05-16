@@ -8,7 +8,7 @@ import { SkeletonList } from "@/components/SkeletonCard";
 import { BRANDS, CATEGORIES, LISTINGS } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/search")({
-  head: () => ({ meta: [{ title: "Buscar — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Buscar — Trueki" }] }),
   component: SearchPage,
 });
 

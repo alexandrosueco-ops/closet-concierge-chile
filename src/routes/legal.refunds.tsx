@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-export const Route = createFileRoute("/legal/refunds")({ head: () => ({ meta: [{ title: "Reembolsos — VeriCloset" }] }), component: RefundsPage });
+export const Route = createFileRoute("/legal/refunds")({ head: () => ({ meta: [{ title: "Reembolsos — Trueki" }] }), component: RefundsPage });
 function RefundsPage() {
   return (
     <div className="app-shell">

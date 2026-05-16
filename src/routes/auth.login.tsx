@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/auth/login")({
-  head: () => ({ meta: [{ title: "Iniciar sesión — VeriCloset" }] }),
+  head: () => ({ meta: [{ title: "Iniciar sesión — Trueki" }] }),
   component: LoginPage,
 });
 
@@ -59,7 +59,7 @@ function LoginPage() {
           </div>
           <div className="text-center">
             <h1 className="font-display text-2xl font-semibold">Bienvenido</h1>
-            <p className="mt-0.5 text-sm text-muted-foreground">Inicia sesión en VeriCloset</p>
+            <p className="mt-0.5 text-sm text-muted-foreground">Inicia sesión en Trueki</p>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ import { Package, Scan, Clock, ChevronRight, CheckCircle2, AlertCircle } from "l
 import { useState } from "react";
 
 export const Route = createFileRoute("/warehouse/inbound")({
-  head: () => ({ meta: [{ title: "Inbound — VeriCloset Bodega" }] }),
+  head: () => ({ meta: [{ title: "Inbound — Trueki Bodega" }] }),
   component: WarehouseInbound,
 });
 
