@@ -288,10 +288,10 @@ function LandingPage() {
         {/* Foto de fondo full width */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=85&auto=format&fit=crop&crop=top"
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1400&q=85&auto=format&fit=crop"
             alt="Modelo con moda premium verificada"
-            className="h-full w-full object-cover"
-            style={{ objectPosition: "center 20%" }}
+            className="h-full w-full"
+            style={{ objectFit: "contain", objectPosition: "center center", background: "#f5f2ec" }}
           />
           {/* Overlay gradiente: transparente arriba, blanco abajo */}
           <div className="absolute inset-0" style={{
@@ -360,9 +360,9 @@ function LandingPage() {
       <section className="max-w-6xl mx-auto px-5 md:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: <ShieldCheck className="h-6 w-6" />, t: "Autenticación garantizada", d: "Cada artículo es revisado físicamente por expertos en Santiago antes de ser enviado al comprador." },
-            { icon: <RotateCcw className="h-6 w-6" />, t: "Reembolso del 100%", d: "Si el artículo es falso o no corresponde a la descripción, te devolvemos todo. Sin preguntas, sin vueltas." },
-            { icon: <CheckCircle2 className="h-6 w-6" />, t: "Pago protegido en escrow", d: "Tu dinero nunca llega al vendedor hasta que verificamos el artículo y confirmas que está todo bien." },
+            { icon: <ShieldCheck className="h-6 w-6" />, t: "Autenticación y fotos profesionales", d: "Enviamos tu artículo, lo verificamos y lo fotografiamos nosotros. La publicación queda perfecta sin que tú hagas nada más." },
+            { icon: <CheckCircle2 className="h-6 w-6" />, t: "Pago retenido hasta confirmación", d: "El dinero del comprador queda con nosotros. Se libera al vendedor solo cuando el comprador acepta — o automáticamente a las 2 horas de la entrega." },
+            { icon: <RotateCcw className="h-6 w-6" />, t: "Protección para ambas partes", d: "2 horas para reportar problemas tras el retiro. Si todo está bien (o el tiempo vence), el pago se libera automáticamente al vendedor." },
           ].map(({ icon, t, d }, i) => (
             <div key={i} className="flex flex-col gap-3 rounded-2xl border-2 border-border p-6 bg-card hover:border-primary/40 transition-colors">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">{icon}</div>
@@ -388,21 +388,21 @@ function LandingPage() {
           <h2 className="text-2xl font-black" style={{ letterSpacing: "-0.04em" }}>¿Cómo funciona Trueki?</h2>
         </div>
 
-        <Step num="01" tag="Descubrir" title="Encuentra tu pieza perfecta"
-          desc="Explora miles de artículos premium verificados. Filtra por marca, talla, condición y precio. Todos con fotos reales de evidencia." illus={<IllusBrowse />} />
-        <Step num="02" tag="Pagar seguro" title="Tu pago queda protegido desde el inicio"
-          desc="El dinero queda retenido en escrow. Nunca llega al vendedor hasta que verificamos el artículo y tú confirmas que todo está bien." illus={<IllusEscrow />} />
-        <Step num="03" tag="Autenticar" title="Expertos revisan cada detalle"
-          desc="Nuestro equipo en Santiago verifica materiales, costuras, herrajes, seriales y fecha codes. Guardamos evidencia fotográfica de todo." illus={<IllusVerify />} />
-        <Step num="04" tag="Recibir" title="Tuyo. Auténtico. Garantizado."
-          desc="El artículo llega verificado. Tienes 48 horas para reportar cualquier problema. Si algo falla, reembolso del 100%. Sin discusión." illus={<IllusDeliver />} />
+        <Step num="01" tag="Vendedor — Enviar solicitud" title="Envías tu artículo a Trueki, gratis"
+          desc="Rellenas un formulario con información del artículo y subes algunas fotos de referencia. Luego envías el artículo a nuestro centro de Santiago — el envío corre por tu cuenta, sin costo de registro." illus={<IllusBrowse />} />
+        <Step num="02" tag="Trueki — Verificar y publicar" title="Lo verificamos, fotografiamos y publicamos"
+          desc="Nuestro equipo autentica el artículo, toma fotos profesionales y crea la publicación en la plataforma. Tú no necesitas hacer nada más — nosotros gestionamos todo." illus={<IllusVerify />} />
+        <Step num="03" tag="Comprador — Pagar con garantía" title="El comprador paga y el dinero queda en hold"
+          desc="Cuando alguien compra, el pago queda retenido con nosotros. El comprador paga el envío y Trueki despacha el artículo directamente desde nuestro centro." illus={<IllusEscrow />} />
+        <Step num="04" tag="Entrega — Confirmación automática" title="2 horas para aceptar, luego pago automático"
+          desc="El comprador tiene 2 horas desde el retiro o entrega para reportar algún problema. Si no hay reclamos, se acepta automáticamente: el dinero se libera al vendedor y se descuenta la comisión de garantía de Trueki." illus={<IllusDeliver />} />
       </section>
 
       {/* ── MANIFESTO ────────────────────────────────────────────── */}
       <section className="bg-primary py-16 px-5 text-center">
         <div className="max-w-2xl mx-auto">
           <p className="font-black text-2xl md:text-3xl leading-tight mb-3" style={{ letterSpacing: "-0.04em", color: "#1e2114" }}>
-            "La moda de segunda mano merece la misma confianza que comprar en boutique."
+            "Enviamos tu artículo. Lo verificamos. Lo publicamos. Cuando se vende, tú cobras."
           </p>
           <p className="text-sm mb-8" style={{ color: "rgba(30,33,20,0.6)" }}>— Trueki, Santiago 2025</p>
           <div className="flex gap-3 justify-center flex-wrap">
