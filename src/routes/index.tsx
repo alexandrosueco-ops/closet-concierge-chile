@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { Search, ArrowRight, ShieldCheck, RotateCcw, CheckCircle2, Menu, X } from "lucide-react";
 import { ListingCard } from "@/components/ListingCard";
+import { NotifyMe } from "@/components/NotifyMe";
 import { SkeletonList } from "@/components/SkeletonCard";
 import { TruekiLogo } from "@/components/TruekiLogo";
 import { usePublishedListings, useCategories } from "@/hooks/useListings";
@@ -468,15 +469,13 @@ function LandingPage() {
             <p className="font-black text-xl mb-1" style={{ letterSpacing: "-0.03em" }}>¿Tienes artículos premium?</p>
             <p className="text-sm text-muted-foreground max-w-sm">Publica gratis en minutos. Nosotros verificamos, empacamos y enviamos al comprador por ti.</p>
           </div>
-          <div className="flex gap-2 shrink-0">
+          <div className="flex gap-2 shrink-0 flex-wrap">
             <Link to="/sell" className="rounded-full bg-primary px-6 py-3 text-sm font-black whitespace-nowrap">
-              Publicar artículo
+              Enviar artículo
             </Link>
-            {!user && (
-              <Link to="/auth/signup" className="rounded-full border-2 border-border bg-white px-6 py-3 text-sm font-black whitespace-nowrap">
-                Registrarse gratis
-              </Link>
-            )}
+            <Link to="/sell/waitlist" className="rounded-full border-2 border-border bg-white px-6 py-3 text-sm font-black whitespace-nowrap">
+              Únete como vendedor
+            </Link>
           </div>
         </div>
       </section>

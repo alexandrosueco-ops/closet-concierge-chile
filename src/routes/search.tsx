@@ -5,6 +5,7 @@ import { AppHeader } from "@/components/layout/AppHeader";
 import { BottomTabs } from "@/components/layout/BottomTabs";
 import { ListingCard } from "@/components/ListingCard";
 import { SkeletonList } from "@/components/SkeletonCard";
+import { NotifyMe } from "@/components/NotifyMe";
 import { usePublishedListings, useBrands, useCategories, conditionLabel } from "@/hooks/useListings";
 
 export const Route = createFileRoute("/search")({
@@ -148,11 +149,25 @@ function SearchPage() {
         {loading ? (
           <SkeletonList count={6} />
         ) : results.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-border p-12 text-center">
-            <SearchIcon className="mx-auto h-8 w-8 text-muted-foreground mb-3" />
-            <p className="text-sm font-black">Sin resultados</p>
-            <p className="mt-1 text-xs text-muted-foreground">Prueba con otra marca o quita algún filtro.</p>
-            {hasFilters && <button onClick={clearAll} className="mt-3 text-xs font-bold text-foreground underline">Limpiar filtros</button>}
+          <div className="space-y-4">
+            <div className="rounded-2xl border-2 border-dashed border-border p-10 text-center">
+              <SearchIcon className="mx-auto h-8 w-8 text-muted-foreground mb-3" />
+              <p className="text-sm font-black">Sin resultados</p>
+              <p className="mt-1 text-xs text-muted-foreground">Prueba con otra marca o quita algún filtro.</p>
+              {hasFilters && <button onClick={clearAll} className="mt-3 text-xs font-bold text-foreground underline">Limpiar filtros</button>}
+            </div>
+            {brandId && (
+              <NotifyMe
+                brandId={brandId}
+                brandName={brands.find(b => b.id === brandId)?.name}
+              />
+            )}
+            {catId && !brandId && (
+              <NotifyMe
+                categoryId={catId}
+                categoryName={categories.find(c => c.id === catId)?.name}
+              />
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-3 listings-grid">
