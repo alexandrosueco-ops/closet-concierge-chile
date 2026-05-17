@@ -205,7 +205,7 @@ function CheckoutSheet({ listing, total, buyerProtection, onBack }: {
               { id: "transferencia", label: "Transferencia bancaria", sub: "Te enviamos los datos por WhatsApp" },
             ].map((m) => (
               <label key={m.id} className="flex cursor-pointer items-center gap-3 rounded-xl border-2 border-border p-3 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-                <input type="radio" name="payment" value={m.id} defaultChecked={m.id === "mp"} className="accent-[#cfd4ae]" />
+                <input type="radio" name="payment" value={m.id} defaultChecked={m.id === "mp"} className="accent-[#dadd48]" />
                 <div><p className="text-sm font-bold">{m.label}</p><p className="text-xs text-muted-foreground">{m.sub}</p></div>
               </label>
             ))}

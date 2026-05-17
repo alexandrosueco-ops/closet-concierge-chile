@@ -23,7 +23,7 @@ function BagIcon({ size }: { size: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <rect width="64" height="64" rx="16" fill="#cfd4ae" />
+      <rect width="64" height="64" rx="16" fill="#dadd48" />
       {/* Cuerpo de la bolsa */}
       <path d="M18 27h28l-4 23H22L18 27z" fill="white" />
       {/* Asas */}

@@ -165,10 +165,10 @@ function IllusBrowse() {
   return (
     <svg width="100%" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect x="10" y="10" width="380" height="26" rx="13" fill="white" stroke="#e4e7d4" strokeWidth="1.5"/>
-      <circle cx="32" cy="23" r="6" stroke="#cfd4ae" strokeWidth="2" fill="none"/>
-      <line x1="36.5" y1="27.5" x2="41" y2="32" stroke="#cfd4ae" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="32" cy="23" r="6" stroke="#dadd48" strokeWidth="2" fill="none"/>
+      <line x1="36.5" y1="27.5" x2="41" y2="32" stroke="#dadd48" strokeWidth="2" strokeLinecap="round"/>
       <rect x="48" y="17" width="110" height="12" rx="6" fill="#f0f2e6"/>
-      <rect x="10" y="46" width="44" height="16" rx="8" fill="#cfd4ae"/>
+      <rect x="10" y="46" width="44" height="16" rx="8" fill="#dadd48"/>
       <rect x="60" y="46" width="56" height="16" rx="8" fill="white" stroke="#e4e7d4" strokeWidth="1.5"/>
       <rect x="122" y="46" width="52" height="16" rx="8" fill="white" stroke="#e4e7d4" strokeWidth="1.5"/>
       <rect x="180" y="46" width="60" height="16" rx="8" fill="white" stroke="#e4e7d4" strokeWidth="1.5"/>
@@ -178,16 +178,16 @@ function IllusBrowse() {
       <rect x="10" y="110" width="178" height="22" rx="0" fill="#f5f2ec"/>
       <path d="M74 100 v-9 a24 24 0 0 1 48 0 v9" stroke="#1e2114" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.4"/>
       <rect x="68" y="100" width="56" height="32" rx="8" fill="#1e2114" opacity="0.7"/>
-      <rect x="86" y="112" width="20" height="3" rx="1.5" fill="#cfd4ae" opacity="0.5"/>
-      <rect x="18" y="144" width="64" height="12" rx="6" fill="#cfd4ae"/>
+      <rect x="86" y="112" width="20" height="3" rx="1.5" fill="#dadd48" opacity="0.5"/>
+      <rect x="18" y="144" width="64" height="12" rx="6" fill="#dadd48"/>
       <rect x="18" y="160" width="80" height="7" rx="3.5" fill="#f0f2e6"/>
       {/* Card 2 */}
       <rect x="196" y="72" width="204" height="100" rx="14" fill="white" stroke="#e4e7d4" strokeWidth="1.5"/>
       <rect x="196" y="72" width="204" height="60" rx="14" fill="#eef0f5"/>
       <rect x="196" y="110" width="204" height="22" rx="0" fill="#eef0f5"/>
       <path d="M222 116 Q242 100 282 108 Q300 112 298 124 L222 124 Z" fill="#1e2114" opacity="0.65"/>
-      <path d="M222 124 L298 124 L296 129 L224 129 Z" fill="#cfd4ae"/>
-      <rect x="204" y="144" width="64" height="12" rx="6" fill="#cfd4ae"/>
+      <path d="M222 124 L298 124 L296 129 L224 129 Z" fill="#dadd48"/>
+      <rect x="204" y="144" width="64" height="12" rx="6" fill="#dadd48"/>
       <rect x="204" y="160" width="80" height="7" rx="3.5" fill="#f0f2e6"/>
     </svg>
   );
@@ -197,21 +197,21 @@ function IllusEscrow() {
   return (
     <svg width="100%" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="52" cy="58" r="28" fill="#f0f2e6"/>
-      <circle cx="52" cy="46" r="14" fill="#cfd4ae" opacity="0.4"/>
+      <circle cx="52" cy="46" r="14" fill="#dadd48" opacity="0.4"/>
       <path d="M28 76 Q28 63 52 63 Q76 63 76 76" stroke="#7a7f6a" strokeWidth="2" strokeLinecap="round" fill="none"/>
       <text x="52" y="98" textAnchor="middle" fill="#7a7f6a" fontSize="10" fontWeight="700" fontFamily="Inter,sans-serif">Comprador</text>
-      <path d="M88 58 L154 58" stroke="#cfd4ae" strokeWidth="1.5" strokeDasharray="5 3" fill="none"/>
-      <path d="M150 52 L158 58 L150 64" stroke="#cfd4ae" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-      <rect x="102" y="45" width="36" height="16" rx="8" fill="#cfd4ae"/>
+      <path d="M88 58 L154 58" stroke="#dadd48" strokeWidth="1.5" strokeDasharray="5 3" fill="none"/>
+      <path d="M150 52 L158 58 L150 64" stroke="#dadd48" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      <rect x="102" y="45" width="36" height="16" rx="8" fill="#dadd48"/>
       <text x="120" y="57" textAnchor="middle" fill="#1e2114" fontSize="9" fontWeight="900" fontFamily="Inter,sans-serif">Pago $$</text>
-      <rect x="160" y="34" width="80" height="60" rx="12" fill="white" stroke="#cfd4ae" strokeWidth="2"/>
-      <path d="M184 54 v-7 a16 16 0 0 1 32 0 v7" stroke="#cfd4ae" strokeWidth="2" strokeLinecap="round" fill="none"/>
-      <rect x="178" y="54" width="44" height="24" rx="6" fill="#cfd4ae" opacity="0.5"/>
+      <rect x="160" y="34" width="80" height="60" rx="12" fill="white" stroke="#dadd48" strokeWidth="2"/>
+      <path d="M184 54 v-7 a16 16 0 0 1 32 0 v7" stroke="#dadd48" strokeWidth="2" strokeLinecap="round" fill="none"/>
+      <rect x="178" y="54" width="44" height="24" rx="6" fill="#dadd48" opacity="0.5"/>
       <circle cx="200" cy="66" r="4" fill="#1e2114" opacity="0.3"/>
       <text x="200" y="112" textAnchor="middle" fill="#1e2114" fontSize="10" fontWeight="800" fontFamily="Inter,sans-serif">TRUEKI</text>
       <text x="200" y="126" textAnchor="middle" fill="#7a7f6a" fontSize="9" fontFamily="Inter,sans-serif">Escrow seguro</text>
-      <path d="M242 64 L298 64" stroke="#cfd4ae" strokeWidth="1.5" strokeDasharray="5 3" fill="none" opacity="0.4"/>
-      <path d="M294 58 L302 64 L294 70" stroke="#cfd4ae" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.4"/>
+      <path d="M242 64 L298 64" stroke="#dadd48" strokeWidth="1.5" strokeDasharray="5 3" fill="none" opacity="0.4"/>
+      <path d="M294 58 L302 64 L294 70" stroke="#dadd48" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.4"/>
       <circle cx="330" cy="58" r="28" fill="#f0f2e6"/>
       <path d="M318 58 L326 66 L344 50" stroke="#7a7f6a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
       <text x="330" y="98" textAnchor="middle" fill="#7a7f6a" fontSize="10" fontWeight="700" fontFamily="Inter,sans-serif">Verificado</text>
@@ -225,18 +225,18 @@ function IllusVerify() {
       <rect x="10" y="120" width="380" height="3" rx="1.5" fill="#e4e7d4"/>
       <path d="M100 86 v-12 a22 22 0 0 1 44 0 v12" stroke="#1e2114" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.4"/>
       <rect x="96" y="86" width="52" height="34" rx="8" fill="#1e2114" opacity="0.65"/>
-      <rect x="112" y="98" width="20" height="3" rx="1.5" fill="#cfd4ae" opacity="0.5"/>
-      <rect x="115" y="106" width="14" height="3" rx="1.5" fill="#cfd4ae" opacity="0.3"/>
+      <rect x="112" y="98" width="20" height="3" rx="1.5" fill="#dadd48" opacity="0.5"/>
+      <rect x="115" y="106" width="14" height="3" rx="1.5" fill="#dadd48" opacity="0.3"/>
       <circle cx="230" cy="80" r="36" fill="white" stroke="#e4e7d4" strokeWidth="2"/>
-      <circle cx="230" cy="80" r="26" fill="#f7f8f3" stroke="#cfd4ae" strokeWidth="1.5"/>
-      <circle cx="230" cy="76" r="8" stroke="#cfd4ae" strokeWidth="2" fill="none"/>
-      <path d="M236 82 L244 92" stroke="#cfd4ae" strokeWidth="3" strokeLinecap="round"/>
+      <circle cx="230" cy="80" r="26" fill="#f7f8f3" stroke="#dadd48" strokeWidth="1.5"/>
+      <circle cx="230" cy="76" r="8" stroke="#dadd48" strokeWidth="2" fill="none"/>
+      <path d="M236 82 L244 92" stroke="#dadd48" strokeWidth="3" strokeLinecap="round"/>
       <rect x="300" y="20" width="90" height="120" rx="12" fill="white" stroke="#e4e7d4" strokeWidth="1.5"/>
       <rect x="310" y="34" width="70" height="2" rx="1" fill="#e4e7d4"/>
       <rect x="310" y="42" width="50" height="2" rx="1" fill="#e4e7d4"/>
       {[0,1,2,3].map(i => (
         <g key={i}>
-          <circle cx="316" cy={60+i*18} r="6" fill={i < 3 ? "#cfd4ae" : "#f0f2e6"}/>
+          <circle cx="316" cy={60+i*18} r="6" fill={i < 3 ? "#dadd48" : "#f0f2e6"}/>
           {i < 3 && <path d={`M313 ${60+i*18} L315 ${62+i*18} L320 ${57+i*18}`} stroke="#1e2114" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
           <rect x="328" y={57+i*18} width={i < 3 ? 54 : 44} height="6" rx="3" fill="#f0f2e6"/>
         </g>
@@ -249,18 +249,18 @@ function IllusDeliver() {
   return (
     <svg width="100%" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="46" cy="58" r="26" fill="#f0f2e6"/>
-      <circle cx="46" cy="48" r="13" fill="#cfd4ae" opacity="0.4"/>
+      <circle cx="46" cy="48" r="13" fill="#dadd48" opacity="0.4"/>
       <path d="M24 74 Q24 64 46 64 Q68 64 68 74" stroke="#7a7f6a" strokeWidth="2" strokeLinecap="round" fill="none"/>
-      <path d="M72 62 Q104 42 128 58" stroke="#cfd4ae" strokeWidth="1.5" strokeDasharray="5 3" fill="none" opacity="0.5"/>
-      <path d="M124 54 L130 62 L122 64" stroke="#cfd4ae" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.5"/>
-      <rect x="130" y="30" width="110" height="90" rx="12" fill="white" stroke="#cfd4ae" strokeWidth="2"/>
-      <path d="M130 62 L240 62" stroke="#cfd4ae" strokeWidth="1" opacity="0.4"/>
-      <path d="M185 30 L185 62" stroke="#cfd4ae" strokeWidth="1" opacity="0.4"/>
-      <rect x="176" y="30" width="18" height="90" rx="0" fill="#cfd4ae" opacity="0.1"/>
-      <circle cx="185" cy="100" r="20" fill="#cfd4ae" opacity="0.15" stroke="#cfd4ae" strokeWidth="1.5"/>
-      <path d="M176 100 L183 107 L196 93" stroke="#cfd4ae" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M72 62 Q104 42 128 58" stroke="#dadd48" strokeWidth="1.5" strokeDasharray="5 3" fill="none" opacity="0.5"/>
+      <path d="M124 54 L130 62 L122 64" stroke="#dadd48" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.5"/>
+      <rect x="130" y="30" width="110" height="90" rx="12" fill="white" stroke="#dadd48" strokeWidth="2"/>
+      <path d="M130 62 L240 62" stroke="#dadd48" strokeWidth="1" opacity="0.4"/>
+      <path d="M185 30 L185 62" stroke="#dadd48" strokeWidth="1" opacity="0.4"/>
+      <rect x="176" y="30" width="18" height="90" rx="0" fill="#dadd48" opacity="0.1"/>
+      <circle cx="185" cy="100" r="20" fill="#dadd48" opacity="0.15" stroke="#dadd48" strokeWidth="1.5"/>
+      <path d="M176 100 L183 107 L196 93" stroke="#dadd48" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
       {[[268,36,15],[292,62,-10],[316,38,22],[278,90,5]].map(([x,y,r],i)=>(
-        <rect key={i} x={x-4} y={y-4} width="8" height="8" rx="2" fill="#cfd4ae" opacity={0.15+i*0.1} transform={`rotate(${r} ${x} ${y})`}/>
+        <rect key={i} x={x-4} y={y-4} width="8" height="8" rx="2" fill="#dadd48" opacity={0.15+i*0.1} transform={`rotate(${r} ${x} ${y})`}/>
       ))}
       <rect x="264" y="100" width="120" height="26" rx="8" fill="#f0f2e6"/>
       <text x="324" y="114" textAnchor="middle" fill="#1e2114" fontSize="10" fontWeight="800" fontFamily="Inter,sans-serif">48h garantía</text>
@@ -311,7 +311,7 @@ function LandingPage() {
 
             {/* Título */}
             <h1 className="font-black leading-[0.9] mb-4" style={{ fontSize: "clamp(40px,9vw,72px)", letterSpacing: "-0.05em", color: "#1e2114" }}>
-              MODA<br /><span style={{ color: "#cfd4ae" }}>PREMIUM.</span><br />SIN RIESGOS.
+              MODA<br /><span style={{ color: "#dadd48" }}>PREMIUM.</span><br />SIN RIESGOS.
             </h1>
 
             <p className="text-base leading-relaxed mb-7 max-w-sm" style={{ color: "rgba(30,33,20,0.65)" }}>
@@ -329,7 +329,7 @@ function LandingPage() {
               </Link>
               {!user && (
                 <Link to="/auth/signup" className="rounded-full py-3.5 px-6 text-sm font-black transition-all"
-                  style={{ background: "#cfd4ae", color: "#1e2114" }}>
+                  style={{ background: "#dadd48", color: "#1e2114" }}>
                   Crear cuenta gratis
                 </Link>
               )}

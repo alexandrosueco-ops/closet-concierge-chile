@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Trueki — Blanco · Sage #cfd4ae · Inter sans-serif */
+/* Trueki — Blanco · Sage #dadd48 · Inter sans-serif */
 
 @theme inline {
   --font-sans: "Inter", "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
@@ -51,15 +51,15 @@
   --foreground:            #1e2114;
   --card:                  #ffffff;
   --card-foreground:       #1e2114;
-  --primary:               #cfd4ae;
+  --primary:               #dadd48;
   --primary-foreground:    #1e2114;
   --secondary:             #f7f8f3;
   --secondary-foreground:  #1e2114;
-  --muted:                 #f0f2e6;
+  --muted:                 #f7f8a0;
   --muted-foreground:      #7a7f6a;
-  --accent:                #e8ead8;
+  --accent:                #f0f26e;
   --accent-foreground:     #1e2114;
-  --trust:                 #cfd4ae;
+  --trust:                 #dadd48;
   --trust-foreground:      #1e2114;
   --success:               #4ade80;
   --success-foreground:    #14532d;
@@ -68,16 +68,16 @@
   --destructive:           #ef4444;
   --destructive-foreground:#ffffff;
   --border:                #e4e7d4;
-  --input:                 #f0f2e6;
-  --ring:                  #cfd4ae;
+  --input:                 #f7f8a0;
+  --ring:                  #dadd48;
 }
 
 .dark {
   --background:    #1a1d12;
-  --foreground:    #f0f2e6;
+  --foreground:    #f7f8a0;
   --card:          #22261a;
-  --card-foreground: #f0f2e6;
-  --primary:       #cfd4ae;
+  --card-foreground: #f7f8a0;
+  --primary:       #dadd48;
   --primary-foreground: #1e2114;
   --muted:         #2a2e20;
   --muted-foreground: #8a8f7a;
@@ -198,7 +198,7 @@
     color: var(--color-foreground);
   }
   .input:focus {
-    border-color: #b8be94;
+    border-color: #c5c83f;
     box-shadow: 0 0 0 3px rgba(207,212,174,0.3);
     background: var(--color-background);
   }

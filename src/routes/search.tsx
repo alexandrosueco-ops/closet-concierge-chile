@@ -117,7 +117,7 @@ function SearchPage() {
           <FilterSection title={`Precio máximo${maxPrice > 0 ? ` · $${(maxPrice / 1000).toFixed(0)}K` : ""}`}>
             <input type="range" min={0} max={2000000} step={50000} value={maxPrice}
               onChange={(e) => setMaxPrice(parseInt(e.target.value))}
-              className="w-full accent-[#b8be94]" />
+              className="w-full accent-[#c5c83f]" />
             <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
               <span>Cualquier precio</span><span>$2.000.000</span>
             </div>

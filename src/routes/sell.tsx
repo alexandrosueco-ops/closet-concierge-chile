@@ -167,7 +167,7 @@ function SellPage() {
             <div className="space-y-2">
               {CONDITIONS.map(c => (
                 <label key={c.value} className={`flex cursor-pointer items-start gap-3 rounded-xl border-2 p-3 transition-all ${form.condition === c.value ? "border-primary bg-primary/5" : "border-border"}`}>
-                  <input type="radio" name="condition" value={c.value} checked={form.condition === c.value} onChange={() => upd({ condition: c.value })} className="mt-0.5 accent-[#cfd4ae]" />
+                  <input type="radio" name="condition" value={c.value} checked={form.condition === c.value} onChange={() => upd({ condition: c.value })} className="mt-0.5 accent-[#dadd48]" />
                   <div><p className="text-sm font-bold">{c.label}</p><p className="text-xs text-muted-foreground">{c.desc}</p></div>
                 </label>
               ))}
