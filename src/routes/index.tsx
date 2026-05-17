@@ -283,73 +283,81 @@ function LandingPage() {
       {/* NAV HORIZONTAL FIJO */}
       <TopNav />
 
-      {/* ── HERO FULL WIDTH ─────────────────────────────────────── */}
-      <section className="relative w-full" style={{ height: "100dvh" }}>
-        {/* Foto de fondo full width */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1400&q=85&auto=format&fit=crop"
-            alt="Modelo con moda premium verificada"
-            className="h-full w-full"
-            style={{ objectFit: "contain", objectPosition: "center center", background: "#f5f2ec" }}
-          />
-          {/* Overlay gradiente: transparente arriba, blanco abajo */}
-          <div className="absolute inset-0" style={{
-            background: "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.7) 65%, rgba(255,255,255,0.97) 82%, rgba(255,255,255,1) 100%)"
-          }} />
-        </div>
+      {/* ── HERO SPLIT: TEXTO IZQUIERDA · FOTO DERECHA ──────────── */}
+      <section className="w-full" style={{ minHeight: "100dvh", display: "flex", flexDirection: "column" }}>
+        <div className="flex flex-col md:flex-row flex-1" style={{ minHeight: "100dvh" }}>
 
-        {/* Contenido posicionado abajo */}
-        <div className="absolute bottom-0 left-0 right-0 px-5 pb-10 md:px-12 md:pb-16 max-w-6xl mx-auto">
-          <div className="md:max-w-xl">
+          {/* ── LADO IZQUIERDO — contenido ─────────────────────── */}
+          <div className="flex flex-col justify-center px-6 py-24 md:py-0 md:px-14 lg:px-20"
+            style={{ flex: "0 0 50%", background: "#fff", zIndex: 1 }}>
+
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-4"
-              style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(8px)", border: "1px solid rgba(207,212,174,0.6)" }}>
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-foreground/70">Marketplace verificado · Chile</span>
+            <div className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-6 self-start"
+              style={{ background: "#f7f8a0", border: "1px solid #dadd48" }}>
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#1e2114" }} />
+              <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: "#1e2114" }}>Marketplace verificado · Chile</span>
             </div>
 
             {/* Título */}
-            <h1 className="font-black leading-[0.9] mb-4" style={{ fontSize: "clamp(40px,9vw,72px)", letterSpacing: "-0.05em", color: "#1e2114" }}>
+            <h1 className="font-black leading-[0.88] mb-5"
+              style={{ fontSize: "clamp(42px,6vw,80px)", letterSpacing: "-0.05em", color: "#1e2114" }}>
               MODA<br /><span style={{ color: "#dadd48" }}>PREMIUM.</span><br />SIN RIESGOS.
             </h1>
 
-            <p className="text-base leading-relaxed mb-7 max-w-sm" style={{ color: "rgba(30,33,20,0.65)" }}>
+            <p className="mb-8 leading-relaxed"
+              style={{ fontSize: "clamp(14px,1.2vw,17px)", color: "rgba(30,33,20,0.6)", maxWidth: 380 }}>
               Compra y vende ropa, bolsos y zapatillas de marca con autenticación física garantizada antes de cada entrega.
             </p>
 
             {/* CTAs */}
-            <div className="flex gap-2 flex-wrap">
-              <Link to="/search" className="rounded-full py-3.5 px-7 text-sm font-black transition-all active:scale-95"
+            <div className="flex gap-2 flex-wrap mb-10">
+              <Link to="/search"
+                className="rounded-full py-3.5 px-7 text-sm font-black transition-all active:scale-95"
                 style={{ background: "#1e2114", color: "white" }}>
                 Explorar →
               </Link>
-              <Link to="/sell" className="rounded-full border-2 border-border bg-white/80 backdrop-blur py-3.5 px-6 text-sm font-black text-foreground transition-all hover:bg-white">
+              <Link to="/sell"
+                className="rounded-full border-2 py-3.5 px-6 text-sm font-black transition-all hover:bg-muted"
+                style={{ borderColor: "#e4e7d4", color: "#1e2114" }}>
                 Vender ahora
               </Link>
               {!user && (
-                <Link to="/auth/signup" className="rounded-full py-3.5 px-6 text-sm font-black transition-all"
+                <Link to="/auth/signup"
+                  className="rounded-full py-3.5 px-6 text-sm font-black transition-all"
                   style={{ background: "#dadd48", color: "#1e2114" }}>
                   Crear cuenta gratis
                 </Link>
               )}
             </div>
-          </div>
-        </div>
 
-        {/* Stats — esquina derecha inferior en desktop */}
-        <div className="absolute bottom-10 right-5 md:right-12 hidden sm:flex flex-col gap-2">
-          {[
-            { v: "94.2%", l: "Autenticidad garantizada" },
-            { v: "100%",  l: "Reembolso si es falso" },
-            { v: "48h",   l: "Ventana de protección" },
-          ].map((s, i) => (
-            <div key={i} className="rounded-xl px-3 py-2 text-right"
-              style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(8px)", border: "1px solid #e4e7d4" }}>
-              <p className="text-sm font-black" style={{ letterSpacing: "-0.03em", color: "#1e2114" }}>{s.v}</p>
-              <p className="text-[10px] font-bold" style={{ color: "#7a7f6a" }}>{s.l}</p>
+            {/* Stats horizontales */}
+            <div className="flex gap-5 flex-wrap">
+              {[
+                { v: "Autenticidad", l: "garantizada" },
+                { v: "100%",  l: "Reembolso si es falso" },
+                { v: "2h",    l: "Ventana de protección" },
+              ].map((s, i) => (
+                <div key={i} style={{ borderLeft: "2px solid #dadd48", paddingLeft: 10 }}>
+                  <p className="text-sm font-black" style={{ letterSpacing: "-0.03em", color: "#1e2114" }}>{s.v}</p>
+                  <p className="text-[10px] font-semibold" style={{ color: "#7a7f6a" }}>{s.l}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* ── LADO DERECHO — foto ────────────────────────────── */}
+          <div className="relative" style={{ flex: "0 0 50%", minHeight: "60dvh" }}>
+            <img
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=90&auto=format&fit=crop"
+              alt="Modelo con moda premium verificada"
+              className="absolute inset-0 h-full w-full"
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+            />
+            {/* Fade sutil en el borde izquierdo para unión suave */}
+            <div className="absolute inset-y-0 left-0 w-16"
+              style={{ background: "linear-gradient(to right, rgba(255,255,255,0.4), transparent)" }} />
+          </div>
+
         </div>
       </section>
 
