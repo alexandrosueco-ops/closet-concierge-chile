@@ -335,7 +335,6 @@ function LandingPage() {
               {[
                 { v: "Autenticidad", l: "garantizada" },
                 { v: "100%",  l: "Reembolso si es falso" },
-                { v: "2h",    l: "Ventana de protección" },
               ].map((s, i) => (
                 <div key={i} style={{ borderLeft: "2px solid #dadd48", paddingLeft: 10 }}>
                   <p className="text-sm font-black" style={{ letterSpacing: "-0.03em", color: "#1e2114" }}>{s.v}</p>
