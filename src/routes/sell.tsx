@@ -5,8 +5,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { useBrands, useCategories, formatCLP } from "@/hooks/useListings";
 import { AppHeader } from "@/components/layout/AppHeader";
 
+import { SEO } from "@/components/SeoHead";
+
 export const Route = createFileRoute("/sell")({
-  head: () => ({ meta: [{ title: "Publicar artículo — Trueki" }] }),
+  head: () => ({ meta: SEO.sell }),
   component: SellPage,
 });
 

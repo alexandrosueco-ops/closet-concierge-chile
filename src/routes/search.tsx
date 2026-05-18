@@ -8,8 +8,10 @@ import { SkeletonList } from "@/components/SkeletonCard";
 import { NotifyMe } from "@/components/NotifyMe";
 import { usePublishedListings, useBrands, useCategories, conditionLabel } from "@/hooks/useListings";
 
+import { SEO } from "@/components/SeoHead";
+
 export const Route = createFileRoute("/search")({
-  head: () => ({ meta: [{ title: "Buscar — Trueki" }] }),
+  head: () => ({ meta: SEO.search }),
   component: SearchPage,
 });
 

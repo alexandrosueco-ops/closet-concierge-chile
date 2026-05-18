@@ -3,13 +3,17 @@ import { useState, useEffect, useRef } from "react";
 import { Search, ArrowRight, ShieldCheck, RotateCcw, CheckCircle2, Menu, X } from "lucide-react";
 import { ListingCard } from "@/components/ListingCard";
 import { NotifyMe } from "@/components/NotifyMe";
+import { SchemaOrg } from "@/components/SchemaOrg";
+import { SEO } from "@/components/SeoHead";
 import { SkeletonList } from "@/components/SkeletonCard";
 import { TruekiLogo } from "@/components/TruekiLogo";
 import { usePublishedListings, useCategories } from "@/hooks/useListings";
 import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [{ title: "Trueki — Moda premium verificada en Chile" }] }),
+  head: () => ({
+    meta: SEO.home,
+  }),
   component: LandingPage,
 });
 
@@ -302,8 +306,11 @@ function LandingPage() {
             {/* Título */}
             <h1 className="font-black leading-[0.88] mb-5"
               style={{ fontSize: "clamp(42px,6vw,80px)", letterSpacing: "-0.05em", color: "#1e2114" }}>
-              MODA<br /><span style={{ color: "#dadd48" }}>PREMIUM.</span><br />SIN RIESGOS.
+              MODA<br /><span style={{ color: "#dadd48" }}>PREMIUM.</span>
+              <br /><span>SIN RIESGOS.</span>
             </h1>
+            {/* Schema.org structured data — invisible para usuarios, vital para SEO */}
+            <SchemaOrg type="home" />
 
             <p className="mb-8 leading-relaxed"
               style={{ fontSize: "clamp(14px,1.2vw,17px)", color: "rgba(30,33,20,0.6)", maxWidth: 380 }}>
@@ -394,6 +401,7 @@ function LandingPage() {
         <div className="max-w-6xl mx-auto px-5 md:px-8 mb-4">
           <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">Proceso</p>
           <h2 className="text-2xl font-black" style={{ letterSpacing: "-0.04em" }}>¿Cómo funciona Trueki?</h2>
+          <p className="text-sm text-muted-foreground mt-1">Un proceso simple y transparente para compradores y vendedores</p>
         </div>
 
         <Step num="01" tag="Vendedor — Enviar solicitud" title="Envías tu artículo a Trueki, gratis"
@@ -431,7 +439,7 @@ function LandingPage() {
         <div className="mb-6 flex items-center justify-between">
           <div>
             <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">Catálogo</p>
-            <h2 className="text-xl font-black" style={{ letterSpacing: "-0.03em" }}>Recién publicado</h2>
+            <h2 className="text-xl font-black" style={{ letterSpacing: "-0.03em" }}>Recién publicado en Trueki</h2>
           </div>
           <Link to="/search" className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors">Ver todo →</Link>
         </div>
