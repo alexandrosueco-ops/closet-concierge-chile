@@ -11,25 +11,48 @@ interface AuthState {
   loading: boolean;
   displayName: string;
   initial: string;
+  avatarUrl: string | null;
 }
 
 export function useAuth(): AuthState {
   const [state, setState] = useState<AuthState>({
-    user: null, session: null, roles: [], loading: true, displayName: "", initial: "",
+    user: null, session: null, roles: [], loading: true,
+    displayName: "", initial: "", avatarUrl: null,
   });
 
   const setFromSession = useCallback(async (session: Session | null) => {
     if (!session?.user) {
-      setState({ user: null, session: null, roles: [], loading: false, displayName: "", initial: "" });
+      setState({ user: null, session: null, roles: [], loading: false, displayName: "", initial: "", avatarUrl: null });
       return;
     }
-    const roles = await fetchRoles(session.user.id);
+
+    const u = session.user;
+    const roles = await fetchRoles(u.id);
+
+    // Nombre: primero perfil de Supabase, luego metadata de Google
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("display_name, avatar_url")
+      .eq("user_id", u.id)
+      .single();
+
     const displayName =
-      session.user.user_metadata?.display_name ??
-      session.user.email?.split("@")[0] ?? "Usuario";
+      profile?.display_name ??
+      u.user_metadata?.full_name ??
+      u.user_metadata?.name ??
+      u.email?.split("@")[0] ??
+      "Usuario";
+
+    const avatarUrl =
+      profile?.avatar_url ??
+      u.user_metadata?.avatar_url ??
+      null;
+
     setState({
-      user: session.user, session, roles, loading: false,
-      displayName, initial: displayName.charAt(0).toUpperCase(),
+      user: u, session, roles, loading: false,
+      displayName,
+      initial: displayName.charAt(0).toUpperCase(),
+      avatarUrl,
     });
   }, []);
 
@@ -43,8 +66,11 @@ export function useAuth(): AuthState {
 }
 
 async function fetchRoles(userId: string): Promise<AppRole[]> {
-  const { data } = await supabase.from("user_roles").select("role").eq("user_id", userId);
-  return (data?.map((r) => r.role as AppRole)) ?? ["buyer"];
+  const { data } = await supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", userId);
+  return (data?.map(r => r.role as AppRole)) ?? ["buyer"];
 }
 
 export async function signOut() {
