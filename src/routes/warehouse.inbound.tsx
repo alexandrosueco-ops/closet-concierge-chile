@@ -1,155 +1,155 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { Package, CheckCircle2, Clock, Search, ArrowRight, RefreshCw } from "lucide-react";
 import { AppHeader } from "@/components/layout/AppHeader";
-import { WarehouseTabs } from "@/components/layout/WarehouseTabs";
-import { formatCLP } from "@/lib/mock-data";
-import { Package, Scan, Clock, ChevronRight, CheckCircle2, AlertCircle } from "lucide-react";
-import { useState } from "react";
+import { BottomTabs } from "@/components/layout/BottomTabs";
+import { AuthGuard } from "@/components/AuthGuard";
+import { supabase } from "@/integrations/supabase/client";
+import { formatCLP } from "@/hooks/useListings";
 
 export const Route = createFileRoute("/warehouse/inbound")({
-  head: () => ({ meta: [{ title: "Inbound — Trueki Bodega" }] }),
-  component: WarehouseInbound,
+  head: () => ({ meta: [{ title: "Inbound — Bodega Trueki" }] }),
+  component: () => <AuthGuard requiredRoles={["warehouse","admin"]}><InboundPage /></AuthGuard>,
 });
 
-interface InboundItem {
-  orderId: string;
-  brand: string;
-  title: string;
-  seller: string;
-  carrier: string;
-  tracking: string;
-  arrivedAt: string;
-  priority: "alta" | "normal";
-  photos: number;
-  requiredPhotos: number;
+interface DraftListing {
+  id: string; title: string; status: string; condition: string;
+  price_clp: number; created_at: string;
+  brands: { name: string; risk_level: string } | null;
+  categories: { name: string } | null;
+  profiles: { display_name: string | null } | null;
+  listing_photos: { url: string }[];
+  warehouse_received_at: string | null;
 }
 
-const INBOUND_QUEUE: InboundItem[] = [
-  {
-    orderId: "ORD-X9Y8Z7", brand: "Louis Vuitton", title: "Speedy 30 monogram",
-    seller: "Valentina M.", carrier: "Chilexpress", tracking: "9999-0001-2345",
-    arrivedAt: "Hoy 09:14", priority: "alta", photos: 0, requiredPhotos: 6,
-  },
-  {
-    orderId: "ORD-A1B2C3", brand: "Gucci", title: "GG Marmont matelassé",
-    seller: "Diego R.", carrier: "Starken", tracking: "STK-7654321",
-    arrivedAt: "Hoy 11:02", priority: "alta", photos: 0, requiredPhotos: 6,
-  },
-  {
-    orderId: "ORD-M3N4O5", brand: "Nike", title: "Air Max 90 infrared",
-    seller: "Camila F.", carrier: "Correos Chile", tracking: "CC-4567890",
-    arrivedAt: "Ayer 16:45", priority: "normal", photos: 0, requiredPhotos: 2,
-  },
-  {
-    orderId: "ORD-P6Q7R8", brand: "New Balance", title: "574 Core Pack grey",
-    seller: "Matías L.", carrier: "BlueExpress", tracking: "BX-9988776",
-    arrivedAt: "Ayer 14:30", priority: "normal", photos: 0, requiredPhotos: 2,
-  },
-];
+function InboundPage() {
+  const [listings, setListings] = useState<DraftListing[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<"all"|"draft"|"received">("all");
+  const [search, setSearch] = useState("");
 
-function WarehouseInbound() {
-  const [scanInput, setScanInput] = useState("");
-  const [scanning, setScanning] = useState(false);
+  const load = async () => {
+    setLoading(true);
+    const { data } = await (supabase as any)
+      .from("listings")
+      .select(`id,title,status,condition,price_clp,created_at,warehouse_received_at,
+        brands(name,risk_level),categories(name),
+        profiles!seller_id(display_name),
+        listing_photos(url)`)
+      .in("status", ["draft","received","published"])
+      .order("created_at", { ascending: false });
+    setListings((data ?? []) as DraftListing[]);
+    setLoading(false);
+  };
 
-  const alta = INBOUND_QUEUE.filter((i) => i.priority === "alta");
-  const normal = INBOUND_QUEUE.filter((i) => i.priority === "normal");
+  useEffect(() => { load(); }, []);
+
+  const filtered = listings.filter(l => {
+    if (filter === "draft" && l.status !== "draft") return false;
+    if (filter === "received" && l.status !== "received") return false;
+    if (search && !`${l.title} ${l.brands?.name ?? ""}`.toLowerCase().includes(search.toLowerCase())) return false;
+    return true;
+  });
+
+  const stats = {
+    draft: listings.filter(l => l.status === "draft").length,
+    received: listings.filter(l => l.status === "received").length,
+    published: listings.filter(l => l.status === "published").length,
+  };
+
+  const riskColor: Record<string, string> = {
+    high: "bg-red-100 text-red-700",
+    medium: "bg-amber-100 text-amber-700",
+    low: "bg-green-100 text-green-700",
+  };
 
   return (
     <div className="app-shell pb-24">
-      <AppHeader title="Recepción inbound" />
+      <AppHeader title="Bodega — Inbound" />
 
-      <div className="px-4 pt-3 space-y-4">
-        {/* Escáner QR / ingreso manual */}
-        <div className="rounded-2xl border border-border bg-card p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Scan className="h-4 w-4 text-trust" />
-            <p className="text-sm font-semibold">Escanear o ingresar orden</p>
+      {/* KPIs */}
+      <div className="grid grid-cols-3 gap-2 px-4 pt-4">
+        {[
+          { label: "Esperando", val: stats.draft, color: "text-amber-600" },
+          { label: "Recibidos", val: stats.received, color: "text-blue-600" },
+          { label: "Publicados", val: stats.published, color: "text-green-600" },
+        ].map((s, i) => (
+          <div key={i} className="rounded-2xl border-2 border-border bg-card p-3 text-center">
+            <p className={`text-xl font-black ${s.color}`}>{s.val}</p>
+            <p className="text-[10px] text-muted-foreground font-medium">{s.label}</p>
           </div>
-          <div className="flex gap-2">
-            <input
-              value={scanInput}
-              onChange={(e) => setScanInput(e.target.value.toUpperCase())}
-              placeholder="ORD-XXXXXX"
-              className="input flex-1 font-mono text-sm"
-            />
-            <button
-              className="rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground disabled:opacity-40"
-              disabled={scanInput.length < 6}
-            >
-              Buscar
+        ))}
+      </div>
+
+      {/* Búsqueda + filtro */}
+      <div className="px-4 pt-3 space-y-2">
+        <div className="flex items-center gap-2 rounded-2xl border-2 border-border bg-muted/50 px-3 py-2.5">
+          <Search className="h-4 w-4 text-muted-foreground shrink-0" />
+          <input value={search} onChange={e => setSearch(e.target.value)}
+            placeholder="Buscar artículo o marca..." className="flex-1 bg-transparent text-sm outline-none" />
+        </div>
+        <div className="flex gap-2">
+          {(["all","draft","received"] as const).map(f => (
+            <button key={f} onClick={() => setFilter(f)}
+              className={`rounded-full border-2 px-3 py-1.5 text-xs font-black transition-all ${filter === f ? "border-primary bg-primary" : "border-border"}`}>
+              {f === "all" ? "Todos" : f === "draft" ? "Por recibir" : "Recibidos"}
             </button>
+          ))}
+          <button onClick={load} className="ml-auto flex h-8 w-8 items-center justify-center rounded-full border-2 border-border hover:bg-muted transition-colors">
+            <RefreshCw className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Lista */}
+      <div className="px-4 pt-3 space-y-2">
+        {loading ? (
+          Array.from({length:3}).map((_,i) => <div key={i} className="h-20 rounded-2xl bg-muted animate-pulse" />)
+        ) : filtered.length === 0 ? (
+          <div className="rounded-2xl border-2 border-dashed border-border p-10 text-center">
+            <Package className="mx-auto h-8 w-8 text-muted-foreground mb-2" />
+            <p className="text-sm font-black">Sin artículos pendientes</p>
           </div>
-        </div>
+        ) : filtered.map(l => {
+          const photo = l.listing_photos[0]?.url;
+          const risk = l.brands?.risk_level ?? "low";
+          const statusInfo = {
+            draft:     { label: "Esperando envío", color: "text-amber-600 bg-amber-50" },
+            received:  { label: "Recibido — por verificar", color: "text-blue-600 bg-blue-50" },
+            published: { label: "Publicado ✓", color: "text-green-600 bg-green-50" },
+          }[l.status] ?? { label: l.status, color: "text-muted-foreground bg-muted" };
 
-        {/* Estadísticas del día */}
-        <div className="grid grid-cols-3 gap-2">
-          <StatCard icon={<Package className="h-4 w-4" />} label="En cola" value="4" />
-          <StatCard icon={<CheckCircle2 className="h-4 w-4 text-success" />} label="Hoy verificados" value="7" />
-          <StatCard icon={<AlertCircle className="h-4 w-4 text-destructive" />} label="Alertas" value="1" />
-        </div>
-
-        {/* Cola prioritaria */}
-        {alta.length > 0 && (
-          <section>
-            <div className="mb-2 flex items-center gap-2">
-              <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-semibold text-destructive">PRIORITARIO</span>
-              <p className="text-xs text-muted-foreground">{alta.length} ítem(s) — marca de alto riesgo</p>
-            </div>
-            <div className="space-y-2">
-              {alta.map((item) => <InboundCard key={item.orderId} item={item} />)}
-            </div>
-          </section>
-        )}
-
-        {/* Cola normal */}
-        {normal.length > 0 && (
-          <section>
-            <p className="mb-2 text-xs text-muted-foreground font-medium uppercase tracking-wide">Normal</p>
-            <div className="space-y-2">
-              {normal.map((item) => <InboundCard key={item.orderId} item={item} />)}
-            </div>
-          </section>
-        )}
+          return (
+            <Link key={l.id} to="/warehouse/verify/$orderId" params={{ orderId: l.id }}
+              className="block rounded-2xl border-2 border-border bg-card overflow-hidden active:scale-[0.98] transition-all">
+              <div className="flex gap-3 p-3">
+                {photo ? (
+                  <img src={photo} className="h-14 w-14 rounded-xl object-cover shrink-0" alt="" />
+                ) : (
+                  <div className="h-14 w-14 rounded-xl bg-muted shrink-0 flex items-center justify-center">
+                    <Package className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{l.brands?.name}</p>
+                    <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full ${riskColor[risk]}`}>
+                      {risk === "high" ? "ALTO" : risk === "medium" ? "MEDIO" : "BAJO"}
+                    </span>
+                  </div>
+                  <p className="line-clamp-1 text-sm font-bold">{l.title}</p>
+                  <p className="text-xs text-muted-foreground">{l.profiles?.display_name ?? "—"} · {formatCLP(l.price_clp)}</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-1" />
+              </div>
+              <div className={`px-3 py-1.5 text-[11px] font-bold ${statusInfo.color}`}>
+                {statusInfo.label}
+              </div>
+            </Link>
+          );
+        })}
       </div>
-
-      <WarehouseTabs />
-    </div>
-  );
-}
-
-function InboundCard({ item }: { item: InboundItem }) {
-  return (
-    <Link to="/warehouse/verify/$orderId" params={{ orderId: item.orderId }} className="block rounded-2xl border border-border bg-card overflow-hidden">
-      <div className="p-3">
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="text-xs text-muted-foreground">{item.brand}</p>
-            <p className="text-sm font-medium">{item.title}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">{item.seller}</p>
-          </div>
-          <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5" />
-        </div>
-        <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{item.arrivedAt}</span>
-          <span>{item.carrier}</span>
-          <span className="font-mono">{item.tracking}</span>
-        </div>
-      </div>
-      <div className="border-t border-border bg-muted/30 px-3 py-2 flex items-center justify-between">
-        <span className="text-xs text-muted-foreground">
-          Fotos requeridas: <span className="font-semibold text-foreground">{item.requiredPhotos}</span>
-        </span>
-        <span className="text-xs font-semibold text-trust">Iniciar verificación →</span>
-      </div>
-    </Link>
-  );
-}
-
-function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-border bg-card p-3 text-center">
-      <div className="flex justify-center mb-1">{icon}</div>
-      <p className="font-display text-lg font-semibold">{value}</p>
-      <p className="text-[11px] text-muted-foreground">{label}</p>
+      <BottomTabs />
     </div>
   );
 }
